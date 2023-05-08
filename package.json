@@ -1,0 +1,15 @@
+{
+  "name": "digital-wallet-fullstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:MartinGK/DigitalWalletFullStack.git",
+  "author": "MartinGK <mrtgeka@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "scripts": {
+    "prepare": "concurrently \"cd eth-wallet-analytics && yarn\" \"cd eth-wallet-dashboard && yarn\"",
+    "dev": "concurrently \"cd eth-wallet-analytics && yarn start:dev\" \"cd eth-wallet-dashboard && yarn dev\""
+  }
+}
