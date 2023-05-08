@@ -6,13 +6,13 @@ import { getBalance } from "@/api";
 const WalletBalance: React.FC = () => {
   const { selectedWallet } = useContext(GlobalContext);
   const currentCurrencyValue: number = 1;
-  const [balance, setBalance] = useState<number>(0)
+  const [balance, setBalance] = useState<number>(0);
 
   useEffect(() => {
     const getAddressBalance = async (address: string) => {
       const newBalance = await getBalance(address);
-      console.log(newBalance)
-      setBalance(newBalance);
+      console.log(newBalance);
+      setBalance(parseInt(newBalance, 10));
     };
 
     if (selectedWallet.address) {
@@ -22,7 +22,7 @@ const WalletBalance: React.FC = () => {
 
   const currentBalance = useCallback(() => {
     return currentCurrencyValue * balance;
-  }, [currentCurrencyValue]);
+  }, [currentCurrencyValue, balance]);
 
   return (
     <InfoCard>

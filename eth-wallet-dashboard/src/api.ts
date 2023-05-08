@@ -16,7 +16,16 @@ export async function favWallet({ id }: { id: string }) {
 
 export async function getBalance(address: string) {
   try {
-    const response = await axios.get(`/eth/balance/${address}`);
+    const response = await api.get(`/eth/balance/${address}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function isWalletOld(address: string) {
+  try {
+    const response = await api.get(`/eth/${address}/is-old`);
     return response.data;
   } catch (error) {
     console.error(error);

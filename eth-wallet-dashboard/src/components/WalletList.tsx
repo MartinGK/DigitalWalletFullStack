@@ -61,7 +61,7 @@ const WalletList: React.FC = () => {
       {wallets.map((wallet) => (
         <ListItem
           key={wallet.id}
-          className="border border-gray-400 "
+          className="border border-gray-400 pointer"
           onClick={() => setSelectedWallet(wallet)}
           secondaryAction={
             <IconButton
