@@ -25,35 +25,35 @@ Ethereum Wallet Analytics is a generic platform that returns analytics on Ethere
 - Create a database in PostgreSQL.
 - Copy the .env.example to .env and fill in the environment variables according to your database configuration and Etherscan API Key.
 
-##Running
+## Running
 
-All in one
+# All in one
 
 ```sh
   yarn go
 ```
 
-Without installing dependencies
+# Without installing dependencies
 
 ```sh
   yarn dev
 ```
 
-Just Backend
+# Just Backend
 
 ```sh
 cd eth-wallet-analytics
 yarn start:dev
 ```
 
-Just Frontend
+# Just Frontend
 
 ```sh
 cd eth-wallet-dashboard
 yarn dev
 ```
 
-##Features
+## Features
 This project allows you to:
 
 1. Add and display wallet addresses.
@@ -62,7 +62,7 @@ This project allows you to:
 4. Get and edit exchange rates between Euro, US Dollar, and Ethereum.
 5. Calculate a wallet's balance in Euro or US Dollar using the exchange rates.
 
-##Development
+## Development
 This project uses:
 
  - NestJS for the backend.
