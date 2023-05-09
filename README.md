@@ -19,15 +19,56 @@ Ethereum Wallet Analytics is a generic platform that returns analytics on Ethere
    cd DigitalWalletFullStack
    yarn prepare
    ```
+
 3. Set up the database and necessary environment variables:
 
- - Create a database in PostgreSQL.
- - Copy the .env.example to .env and fill in the environment variables according to your database configuration and Etherscan API Key.
- 
-###Running
+- Create a database in PostgreSQL.
+- Copy the .env.example to .env and fill in the environment variables according to your database configuration and Etherscan API Key.
+
+##Running
 
 All in one
 
- ```sh
-   yarn go
- ```
+```sh
+  yarn go
+```
+
+Without installing dependencies
+
+```sh
+  yarn dev
+```
+
+Just Backend
+
+```sh
+cd eth-wallet-analytics
+yarn start:dev
+```
+
+Just Frontend
+
+```sh
+cd eth-wallet-dashboard
+yarn dev
+```
+
+##Features
+This project allows you to:
+
+1. Add and display wallet addresses.
+2. Select and order favorite wallets.
+3. Determine if a wallet is old (if its first transaction was performed at least one year ago).
+4. Get and edit exchange rates between Euro, US Dollar, and Ethereum.
+5. Calculate a wallet's balance in Euro or US Dollar using the exchange rates.
+
+##Development
+This project uses:
+
+ - NestJS for the backend.
+ - Next.js for the frontend.
+ - TypeORM for communication with the database.
+ - Axios for HTTP requests between the frontend and backend.
+ - Etherscan API for obtaining information about Ethereum wallets.
+ - Tailwind CSS for frontend design.
+ - Context for state management on the frontend.
