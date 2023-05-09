@@ -33,6 +33,8 @@ Ethereum Wallet Analytics is a generic platform that returns analytics on Ethere
   yarn go
 ```
 
+- Now go to http://localhost:3000 to see the frontend.
+
 # Without installing dependencies
 
 ```sh
