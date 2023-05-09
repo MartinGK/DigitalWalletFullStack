@@ -36,7 +36,7 @@ const AddWalletForm: React.FC = () => {
           required
           onChange={(e) => setAddress(e.target.value)}
         />
-        <Button type="submit" variant="contained" color="primary" className="bg-gray-100 text-black whitespace-nowrap h-full px-10 hover:bg-gray-400">
+        <Button type="submit" variant="contained" color="primary" className="bg-blue-200 text-black whitespace-nowrap h-full px-10 hover:bg-blue-400">
           Add Wallet
         </Button>
       </Box>

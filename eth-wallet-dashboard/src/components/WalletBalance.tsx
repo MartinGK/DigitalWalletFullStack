@@ -4,21 +4,41 @@ import { GlobalContext } from "@/contexts/globalContext";
 import { getBalance } from "@/api";
 
 const WalletBalance: React.FC = () => {
-  const { selectedWallet } = useContext(GlobalContext);
-  const currentCurrencyValue: number = 1;
+  const { selectedWallet, selectedCurrency, currencies } =
+    useContext(GlobalContext);
+  const [currentCurrencyValue, setCurrentCurrencyValue] = useState<number>(1);
   const [balance, setBalance] = useState<number>(0);
 
   useEffect(() => {
     const getAddressBalance = async (address: string) => {
       const newBalance = await getBalance(address);
-      console.log(newBalance);
-      setBalance(parseInt(newBalance, 10));
+      setBalance(parseFloat(newBalance));
     };
 
     if (selectedWallet.address) {
       getAddressBalance(selectedWallet.address);
     }
   }, [selectedWallet]);
+  
+  useEffect(() => {
+    const currency = currencies.find(
+      (cur) => cur.currency === selectedCurrency
+    );
+    setCurrentCurrencyValue(currency ? parseFloat(currency.rate) : 0);
+  }, [currencies, selectedCurrency]);
+
+  useEffect(() => {
+    const getCurrencyValue = () => {
+      const currency = currencies.find(
+        (cur) => cur.currency === selectedCurrency
+      );
+      if (currency) {
+        setCurrentCurrencyValue(parseFloat(currency.rate));
+      }
+    };
+
+    getCurrencyValue();
+  }, [currencies]);
 
   const currentBalance = useCallback(() => {
     return currentCurrencyValue * balance;
@@ -26,7 +46,7 @@ const WalletBalance: React.FC = () => {
 
   return (
     <InfoCard>
-      Your balance is of <strong>{currentBalance()}</strong>
+      Your balance is of <strong>{currentBalance()}</strong> {selectedCurrency}
     </InfoCard>
   );
 };

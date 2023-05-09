@@ -1,10 +1,13 @@
-import { Wallet } from "@/interfaces";
-import { createContext, useState, ReactNode } from "react";
+import { Wallet, ICurrency } from "@/interfaces";
+import { createContext, useState, ReactNode, useEffect } from "react";
 
 interface ContextType {
   wallets: Wallet[];
-  exchangeValues: Record<string, number>;
   selectedWallet: Wallet;
+  currencies: ICurrency[];
+  selectedCurrency: string;
+  setSelectedCurrency: (currency: string) => void;
+  setCurrencies: (currency: ICurrency[]) => void;
   addWallet: (wallet: Wallet) => void;
   setWallets: (wallets: Wallet[]) => void;
   setSelectedWallet: (wallets: Wallet) => void;
@@ -12,15 +15,15 @@ interface ContextType {
 
 export const GlobalContext = createContext<ContextType>({
   wallets: [],
-  exchangeValues: {
-    USD: 1,
-    EUR: 2,
-  },
   selectedWallet: {
     address: "",
     id: "",
     isFavorite: false,
   },
+  currencies: [],
+  selectedCurrency: "",
+  setSelectedCurrency: () => {},
+  setCurrencies: () => {},
   addWallet: () => {},
   setWallets: () => {},
   setSelectedWallet: () => {},
@@ -30,14 +33,12 @@ export const GlobalContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [wallets, setWallets] = useState<Wallet[]>([]);
+  const [currencies, setCurrencies] = useState<ICurrency[]>([]);
+  const [selectedCurrency, setSelectedCurrency] = useState<string>("");
   const [selectedWallet, setSelectedWallet] = useState<Wallet>({
     address: "",
     id: "",
     isFavorite: false,
-  });
-  const [exchangeValues, setExchangeValues] = useState({
-    USD: 1,
-    EUR: 2,
   });
 
   const addWallet = (wallet: Wallet) => {
@@ -48,10 +49,13 @@ export const GlobalContextProvider: React.FC<{ children: ReactNode }> = ({
     <GlobalContext.Provider
       value={{
         wallets,
-        exchangeValues,
+        currencies,
+        selectedWallet,
+        selectedCurrency,
+        setSelectedCurrency,
+        setCurrencies,
         addWallet,
         setWallets,
-        selectedWallet,
         setSelectedWallet,
       }}
     >

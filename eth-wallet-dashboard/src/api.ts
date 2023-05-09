@@ -32,4 +32,24 @@ export async function isWalletOld(address: string) {
   }
 }
 
+export async function getCurrencies() {
+  try {
+    const response = await api.get(`/exchange-rates`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function editCurrency({ id, rate }: { id: string; rate: string }) {
+  try {
+    const response = await api.put(`/exchange-rates/${id}`, {
+      rate,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default api;
