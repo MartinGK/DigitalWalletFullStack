@@ -9,7 +9,7 @@
     "concurrently": "^8.0.1"
   },
   "scripts": {
-    "prepare": "concurrently \"cd eth-wallet-analytics && yarn\" \"cd eth-wallet-dashboard && yarn\"",
+    "prepare": "concurrently \"git submodule update --init --recursive && cd eth-wallet-analytics && yarn\" \"cd eth-wallet-dashboard && yarn\"",
     "dev": "concurrently \"cd eth-wallet-analytics && yarn start:dev\" \"cd eth-wallet-dashboard && yarn dev\""
   }
 }

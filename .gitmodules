@@ -1,0 +1,4 @@
+[submodule "eth-wallet-analytics"]
+    path = eth-wallet-analytics
+    url = https://github.com/MartinGK/eth-wallet-analytics.git
+    branch = main
